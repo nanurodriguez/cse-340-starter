@@ -3,10 +3,20 @@ const router = express.Router();
 
 // Static Routes
 // Set up "public" folder / subfolders for static files
-router.use(express.static("public"));
+/*router.use(express.static("public"));
 router.use("/css", express.static(__dirname + "public/css"));
 router.use("/js", express.static(__dirname + "public/js"));
 router.use("/images", express.static(__dirname + "public/images"));
+*/
+//Tell the server WHAT to show on the home page:
+
+// This tells Express to look for styles/images in the root "public" folder
+router.use(express.static("public"));
+
+// This defines the Home route
+router.get("/", (req, res) => {
+    res.render("index", { title: "Home" });
+});
 
 module.exports = router;
 
